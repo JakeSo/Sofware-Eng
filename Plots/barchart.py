@@ -9,7 +9,8 @@ df = pd.read_csv('../Datasets/CoronavirusTotal.csv')
 filtered_df = df[df['Country'] == 'US']
 
 # Removing empty spaces from State column to avoid errors
-filtered_df = filtered_df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+filtered_df = filtered_df.apply(
+    lambda x: x.str.strip() if x.dtype == "object" else x)
 
 # Creating sum of number of cases group by State Column
 new_df = filtered_df.groupby(['State'])['Confirmed'].sum().reset_index()
